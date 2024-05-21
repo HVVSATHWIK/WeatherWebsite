@@ -8,20 +8,48 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden; /* Remove scrollbars */
+            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
         canvas {
-            display: block; /* Ensure the canvas fills the screen */
+            display: block;
+        }
+        #ui-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #ui-container input, #ui-container button {
+            margin: 5px 0;
+            padding: 5px;
+            width: 100%;
+        }
+        #ui-container div {
+            margin: 5px 0;
+        }
+        .loading {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- External JavaScript libraries -->
+    <div id="globe-container"></div>
+    <div id="ui-container">
+        <input type="text" id="location-input" placeholder="Enter location">
+        <button id="fetch-weather">Get Weather</button>
+        <div id="weather-info">
+            <div id="temperature">Temperature: N/A</div>
+            <div id="humidity">Humidity: N/A</div>
+            <div id="wind-speed">Wind Speed: N/A</div>
+        </div>
+        <div class="loading">Loading...</div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
-   
-
-    <!-- External JavaScript file for custom code -->
     <script src="weatherj.js"></script>
 </body>
 </html>
