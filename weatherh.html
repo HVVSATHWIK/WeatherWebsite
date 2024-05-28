@@ -5,48 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive 3D Earth Globe</title>
     <link rel="stylesheet" type="text/css" href="weatherc.css">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
-        canvas {
-            display: block;
-        }
-        #ui-container {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        #ui-container input, #ui-container button {
-            margin: 5px 0;
-            padding: 5px;
-            width: 100%;
-        }
-        #ui-container div {
-            margin: 5px 0;
-        }
-        .loading {
-            display: none;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="globe-container"></div>
     <div id="ui-container">
-        <input type="text" id="location-input" placeholder="Enter location">
-        <button id="fetch-weather">Get Weather</button>
+        <div id="title">WeatherIV</div>
+        <input type="text" id="location-input" placeholder="Enter location" aria-label="Location input">
+        <ul id="suggestions"></ul>
+        <button id="fetch-weather" aria-label="Get weather information">Get Weather</button>
         <div id="weather-info">
             <div id="temperature">Temperature: N/A</div>
             <div id="humidity">Humidity: N/A</div>
             <div id="wind-speed">Wind Speed: N/A</div>
+            <div id="condition">Condition: N/A</div>
         </div>
-        <div class="loading">Loading...</div>
+        <div class="loading" aria-live="polite">Loading...</div>
+        <div id="health-info">Health information will be displayed here.</div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>

@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    background: radial-gradient(circle at 50% 50%, #1a1a1a, #000000);
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    transition: background 1s ease;
+}
+
+canvas {
+    display: block;
+}
+
+#ui-container {
+    position: absolute;
+    top: 20%;
+    left: 20px;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #00FF00;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 400px;
+    box-shadow: 0 0 20px #00FF00;
+    animation: glow 1.5s infinite alternate;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px #00FF00;
+    }
+    to {
+        box-shadow: 0 0 20px #00FF00;
+    }
+}
+
+#title {
+    font-size: 36px;
+    color: #00FF00;
+    text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+    margin-bottom: 20px;
+}
+
+#ui-container input, #ui-container button, #ui-container select {
+    margin: 10px 0;
+    padding: 10px;
+    width: calc(100% - 22px);
+    border-radius: 5px;
+    border: 1px solid #00FF00;
+    font-size: 16px;
+    background: rgba(0, 255, 0, 0.1);
+    color: #00FF00;
+    outline: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+#ui-container input:focus, #ui-container select:focus {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+#ui-container button {
+    background-color: #00FF00;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+#ui-container button:hover {
+    background-color: #00CC00;
+    transform: scale(1.05);
+}
+
+#weather-info div {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+#suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #00FF00;
+    max-height: 150px;
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00FF00;
+    transition: box-shadow 0.3s ease;
+}
+
+#suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+#suggestions div:hover {
+    background: #00FF00;
+    color: black;
+}
+
+.loading {
+    display: none;
+    font-size: 16px;
+    color: #00FF00;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+#map {
+    display: none;
+}
+
+#health-info {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #00FF00;
+}
+
+#copyright {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: #00FF00;
+    text-shadow: 0 0 5px #00FF00;
+}

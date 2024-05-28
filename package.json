@@ -1,0 +1,26 @@
+{
+  "type": "module",
+  "name": "weather",
+  "version": "16.14.0",
+  "description": "An interactive website that displays real-time weather information on a 3D Earth globe, powered by the Gemini API.",
+  "main": "weatherh.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HVVSATHWIK/WeatherWebite.git"
+  },
+  "keywords": [
+    "weather"
+  ],
+  "author": "HVVSATHWIK",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/HVVSATHWIK/WeatherWebite/issues"
+  },
+  "homepage": "https://github.com/HVVSATHWIK/WeatherWebite#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
