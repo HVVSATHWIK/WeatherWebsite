@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive 3D Earth and Weather Information. Get real-time weather updates and explore the globe in 3D.">
+    <meta name="keywords" content="3D Earth, Weather, Real-time Weather, Weather API, Interactive Globe">
+    <meta name="author" content="Hari Veerendranath Venkata Sathwik">
     <title>Interactive 3D Earth Globe</title>
     <link rel="stylesheet" type="text/css" href="weatherc.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,9 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div id="ui-container">
         <div id="title">WeatherIV</div>
-        <input type="text" id="location-input" placeholder="Enter location" aria-label="Location input">
+        <div class="tooltip">
+            <input type="text" id="location-input" placeholder="Enter location" aria-label="Location input">
+           
+        </div>
         <ul id="suggestions"></ul>
         <button id="fetch-weather" aria-label="Get weather information">Get Weather</button>
         <div id="weather-info">
@@ -23,7 +30,9 @@
         </div>
         <div class="loading" aria-live="polite">Loading...</div>
         <div id="health-info">Health information will be displayed here.</div>
+        <div><p>&copy All Rights Reserved</p></div>
     </div>
+    <div id="error-message" style="color: red;"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
     <script src="weatherj.js"></script>

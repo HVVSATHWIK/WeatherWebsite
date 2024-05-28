@@ -16,14 +16,16 @@ canvas {
 #ui-container {
     position: absolute;
     top: 20%;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
     background: rgba(0, 0, 0, 0.85);
     border: 2px solid #00FF00;
     color: white;
     padding: 20px;
     border-radius: 15px;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     box-shadow: 0 0 20px #00FF00;
     animation: glow 1.5s infinite alternate;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -46,7 +48,9 @@ canvas {
     margin-bottom: 20px;
 }
 
-#ui-container input, #ui-container button, #ui-container select {
+#ui-container input,
+#ui-container button,
+#ui-container select {
     margin: 10px 0;
     padding: 10px;
     width: calc(100% - 22px);
@@ -59,7 +63,8 @@ canvas {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-#ui-container input:focus, #ui-container select:focus {
+#ui-container input:focus,
+#ui-container select:focus {
     background: rgba(0, 255, 0, 0.2);
 }
 
@@ -109,28 +114,68 @@ canvas {
     font-size: 16px;
     color: #00FF00;
     animation: blink 1s infinite;
+    margin-top: 20px;
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
+    0%, 100% {
+        opacity: 1;
+    }
 
-#map {
-    display: none;
+    50% {
+        opacity: 0;
+    }
 }
 
 #health-info {
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 16px;
     color: #00FF00;
+    border-top: 1px solid #00FF00;
+    padding-top: 10px;
+    text-align: center;
 }
 
-#copyright {
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.weather-info {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 12px;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
     color: #00FF00;
-    text-shadow: 0 0 5px #00FF00;
+    text-align: center;
+}
+
+#suggestions {
+    background: #fff;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#suggestions li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#suggestions li:hover {
+    background: #ccc;
+}
+
+.loading {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 24px;
 }
