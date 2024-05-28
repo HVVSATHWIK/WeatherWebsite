@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(renderer.domElement);
 
     const textureLoader = new THREE.TextureLoader();
-    const earthTexture = textureLoader.load('worldmap.jpg');
-    const spaceTexture = textureLoader.load('space.jpg');
+    const earthTexture = textureLoader.load('worldmap.jpg'); // Ensure this file path is correct
+    const spaceTexture = textureLoader.load('space.jpg'); // Ensure this file path is correct
 
     const earthGeometry = new THREE.SphereGeometry(5, 32, 32);
     const earthMaterial = new THREE.MeshBasicMaterial({ map: earthTexture });
@@ -117,6 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const locationInput = document.getElementById('location-input');
     const fetchWeatherButton = document.getElementById('fetch-weather');
     const suggestionsContainer = document.getElementById('suggestions');
+    const weatherInfo = document.getElementById('weather-info');
+    const loadingIndicator = document.querySelector('.loading');
 
     let cities = [];
 
@@ -147,9 +149,9 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchWeatherButton.addEventListener('click', async () => {
         const location = locationInput.value;
         if (location) {
-            const weatherApiKey = '19bcb9cf46164d57bd8163135242005';
+            const weatherApiKey = '19bcb9cf46164d57bd8163135242005'; // Your actual API key
             const weatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${location}`;
-            const geocodeApiKey = '96c70008709e463e887f204061ffde32';
+            const geocodeApiKey = '96c70008709e463e887f204061ffde32'; // Your OpenCage API key
             const geocodeApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${location}&key=${geocodeApiKey}`;
 
             try {
@@ -184,67 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please enter a location');
         }
     });
-
-    function addCityMarker(lat, lon, cityName) {
-        const markerGeometry = new THREE.SphereGeometry(0.1, 8, 8);
-        const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-        const markerPosition = latLongToVector3(lat, lon, 5, 0.1);
-        marker.position.copy(markerPosition);
-        scene.add(marker);
-
-        marker.name = cityName;
-
-        marker.onClick = async function() {
-            const weatherApiKey = '19bcb9cf46164d57bd8163135242005';
-            const weatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${cityName}`;
-
-            try {
-                setLoading(true);
-                const weatherResponse = await fetch(weatherApiUrl);
-                if (!weatherResponse.ok) {
-                    throw new Error('Failed to fetch weather data');
-                }
-                const weatherData = await weatherResponse.json();
-                const temperature = weatherData.current.temp_c;
-                const humidity = weatherData.current.humidity;
-                const windSpeed = weatherData.current.wind_kph;
-                const condition = weatherData.current.condition.text;
-                updateWeatherInfo(temperature, humidity, windSpeed, condition);
-                setLoading(false);
-            } catch (error) {
-                setLoading(false);
-                console.error('Error:', error.message);
-                alert('Error fetching data. Please try again.');
-            }
-        };
-    }
-
-    addCityMarker(40.7128, -74.0060, 'New York');
-    addCityMarker(34.0522, -118.2437, 'Los Angeles');
-    addCityMarker(51.5074, -0.1278, 'London');
-    addCityMarker(35.6895, 139.6917, 'Tokyo');
-    addCityMarker(-33.8688, 151.2093, 'Sydney');
-
-    function onDocumentMouseDown(event) {
-        event.preventDefault();
-
-        const mouse = new THREE.Vector2(
-            (event.clientX / window.innerWidth) * 2 - 1,
-            -(event.clientY / window.innerHeight) * 2 + 1
-        );
-
-        const raycaster = new THREE.Raycaster();
-        raycaster.setFromCamera(mouse, camera);
-
-        const intersects = raycaster.intersectObjects(scene.children);
-
-        if (intersects.length > 0) {
-            const object = intersects[0].object;
-            if (object.onClick) object.onClick();
-        }
-    }
-    document.addEventListener('mousedown', onDocumentMouseDown, false);
 
     function animate() {
         requestAnimationFrame(animate);
