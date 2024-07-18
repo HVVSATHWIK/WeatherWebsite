@@ -1,6 +1,6 @@
 # Weather Website
 
-![Weather Website](https://your-image-url-here)
+![Weather Website](https://github.com/HVVSATHWIK/WeatherWebsite/blob/main/Globe.png)
 
 ## Table of Contents
 - [Introduction](#introduction)
