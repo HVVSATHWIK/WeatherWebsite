@@ -45,7 +45,7 @@ To set up the project locally, follow these steps:
 
 ## Usage
 
-1. Open your browser and go to `http://localhost:3000`.
+1. Open your browser and go to `https://weathergit.vercel.app/`.
 2. Enter a location in the search bar and press enter.
 3. View the real-time weather information for the entered location.
 
