@@ -149,24 +149,14 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchWeatherButton.addEventListener('click', async () => {
         const location = locationInput.value;
         if (location) {
-            const weatherApiKey = '19bcb9cf46164d57bd8163135242005'; // Your actual API key
-            const weatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${location}`;
-            const geocodeApiKey = '96c70008709e463e887f204061ffde32'; // Your OpenCage API key
+            const weatherApiKey = '82e5b9470eddec6872539808d8d55566';
+            const geocodeApiKey = '96c70008709e463e887f204061ffde32';
             const geocodeApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${location}&key=${geocodeApiKey}`;
-
+            
             try {
                 setLoading(true);
-                const weatherResponse = await fetch(weatherApiUrl);
-                if (!weatherResponse.ok) {
-                    throw new Error('Failed to fetch weather data');
-                }
-                const weatherData = await weatherResponse.json();
-                const temperature = weatherData.current.temp_c;
-                const humidity = weatherData.current.humidity;
-                const windSpeed = weatherData.current.wind_kph;
-                const condition = weatherData.current.condition.text;
-                updateWeatherInfo(temperature, humidity, windSpeed, condition);
 
+                // Fetch geocode data
                 const geocodeResponse = await fetch(geocodeApiUrl);
                 if (!geocodeResponse.ok) {
                     throw new Error('Failed to fetch geocode data');
@@ -174,8 +164,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 const geocodeData = await geocodeResponse.json();
                 const lat = geocodeData.results[0].geometry.lat;
                 const lon = geocodeData.results[0].geometry.lng;
-                moveCameraToLocation(lat, lon);
 
+                // Fetch weather data
+                const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${weatherApiKey}`;
+                const weatherResponse = await fetch(weatherApiUrl);
+                if (!weatherResponse.ok) {
+                    throw new Error('Failed to fetch weather data');
+                }
+                const weatherData = await weatherResponse.json();
+                const temperature = weatherData.main.temp;
+                const humidity = weatherData.main.humidity;
+                const windSpeed = weatherData.wind.speed;
+                const condition = weatherData.weather[0].description;
+                updateWeatherInfo(temperature, humidity, windSpeed, condition);
+
+                moveCameraToLocation(lat, lon);
                 setLoading(false);
             } catch (error) {
                 setLoading(false);
