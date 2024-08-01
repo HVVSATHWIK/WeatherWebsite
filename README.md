@@ -45,7 +45,7 @@ To set up the project locally, follow these steps:
 
 ## Usage
 
-1. Open your browser and go to `https://weathergit.vercel.app/`.
+1. Open your browser and go to `https://rawcdn.githack.com/HVVSATHWIK/WeatherProject/31eaaeed1bc7ab4c7a3c1bd50c3c50105384ac10/weatherh.html`.
 2. Enter a location in the search bar and press enter.
 3. View the real-time weather information for the entered location.
 
