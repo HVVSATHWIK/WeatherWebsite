@@ -1,4 +1,4 @@
-# Weather Website (The work is still in progress that's why all these might not be working)
+# Weather Website (The work is still in progress, so some features might not be working)
 
 ![Weather Website](https://github.com/HVVSATHWIK/WeatherWebsite/blob/main/Globe.png)
 
@@ -26,19 +26,19 @@ Welcome to the Weather Website! This web application provides real-time weather 
 
 To set up the project locally, follow these steps:
 
-1. Clone the repository
+1. Clone the repository:
     ```bash
     git clone https://github.com/HVVSATHWIK/WeatherWebsite.git
     ```
-2. Navigate to the project directory
+2. Navigate to the project directory:
     ```bash
     cd WeatherWebsite
     ```
-3. Install the required dependencies
+3. Install the required dependencies:
     ```bash
     npm install
     ```
-4. Start the development server
+4. Start the development server:
     ```bash
     npm start
     ```
@@ -54,15 +54,15 @@ To set up the project locally, follow these steps:
 I welcome contributions from the community. To contribute:
 
 1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
+2. Create a new branch for your feature or bug fix:
     ```bash
     git checkout -b feature-name
     ```
-3. Commit your changes.
+3. Commit your changes:
     ```bash
     git commit -m "Description of your changes"
     ```
-4. Push to your branch.
+4. Push to your branch:
     ```bash
     git push origin feature-name
     ```
@@ -81,4 +81,4 @@ If you have any questions or suggestions, feel free to reach out:
 
 ---
 
-Thank you for using the Weather Website! We hope it serves your weather checking needs effectively.
+Thank you for using the Weather Website! I hope it serves your weather-checking needs effectively.
