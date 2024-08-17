@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchWeatherButton.addEventListener('click', async () => {
         const location = locationInput.value;
         if (location) {
-            const weatherApiKey = '82e5b9470eddec6872539808d8d55566';  // Replace with your actual API key
-            const geocodeApiKey = '96c70008709e463e887f204061ffde32'; // Your OpenCage API key
+            const weatherApiKey = '';  // Replace with your actual API key
+            const geocodeApiKey = ''; // Your OpenCage API key
             const geocodeApiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${location}&key=${geocodeApiKey}`;
             
             try {
